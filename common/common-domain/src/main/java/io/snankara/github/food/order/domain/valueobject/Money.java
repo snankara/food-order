@@ -7,6 +7,7 @@ public class Money {
 
     private static final int DECIMAL_PLACES = 2;
     private static final int ROUNDING_MODE = BigDecimal.ROUND_HALF_EVEN;
+    public static final Money ZERO = new Money(BigDecimal.ZERO);
 
     private final BigDecimal amount;
 
