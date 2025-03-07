@@ -14,6 +14,10 @@ public class Product extends BaseEntity<ProductId> {
         this.name = name;
     }
 
+    public Product(ProductId productId) {
+        super.setId(productId);
+    }
+
     public String getName() {
         return name;
     }
