@@ -7,6 +7,7 @@ import io.snankara.github.food.order.domain.valueobject.RestaurantId;
 import io.snankara.github.food.order.order.service.domain.dto.create.CreateOrderCommand;
 import io.snankara.github.food.order.order.service.domain.dto.create.CreateOrderResponse;
 import io.snankara.github.food.order.order.service.domain.dto.create.OrderAddress;
+import io.snankara.github.food.order.order.service.domain.dto.track.TrackOrderResponse;
 import io.snankara.github.food.order.order.service.domain.entity.Order;
 import io.snankara.github.food.order.order.service.domain.entity.OrderItem;
 import io.snankara.github.food.order.order.service.domain.entity.Product;
@@ -47,6 +48,14 @@ public class OrderDataMapper {
                 .orderTrackingId(order.getTrackingId().getValue())
                 .orderStatus(order.getOrderStatus())
                 .message("Order created successfully.")
+                .build();
+    }
+
+    public TrackOrderResponse orderToTrackOrderResponse(Order order){
+        return TrackOrderResponse.builder()
+                .orderTrackingId(order.getTrackingId().getValue())
+                .orderStatus(order.getOrderStatus())
+                .failureMessages(order.getFailureMessages())
                 .build();
     }
 
