@@ -1,12 +1,12 @@
 package io.snankara.github.food.order.order.service.domain;
 
-import io.snankara.github.food.order.domain.exception.DomainException;
 import io.snankara.github.food.order.order.service.domain.entity.Order;
 import io.snankara.github.food.order.order.service.domain.entity.Product;
 import io.snankara.github.food.order.order.service.domain.entity.Restaurant;
 import io.snankara.github.food.order.order.service.domain.event.OrderCancelledEvent;
 import io.snankara.github.food.order.order.service.domain.event.OrderCreatedEvent;
 import io.snankara.github.food.order.order.service.domain.event.OrderPaidEvent;
+import io.snankara.github.food.order.order.service.domain.exception.OrderDomainException;
 import lombok.extern.slf4j.Slf4j;
 
 import java.time.ZoneId;
@@ -59,7 +59,7 @@ public class OrderDomainServiceImpl implements OrderDomainService {
 
     private void validateRestaurant(Restaurant restaurant) {
         if (!restaurant.isActive())
-            throw new DomainException("Restaurant with id " + restaurant.getId().getValue() +
+            throw new OrderDomainException("Restaurant with id " + restaurant.getId().getValue() +
                     " is currently not active.");
     }
 
